@@ -7,7 +7,7 @@ let typingTimeout = null;
 // already-loaded messages (to avoid duplicates)
 const loadedIds = new Set();
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "http://98.80.143.158:5000";
 
 const user = JSON.parse(localStorage.getItem("user") || "null");
 const channelId = localStorage.getItem("channelId");

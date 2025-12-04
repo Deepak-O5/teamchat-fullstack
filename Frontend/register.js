@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000";
+const API_BASE = "http://98.80.143.158:5000";
 
 const registerForm = document.getElementById("registerForm");
 const nameInput = document.getElementById("name");
