@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Realtime Chat Test</title>
+</head>
+<body>
+  <h2>Realtime Chat</h2>
+
+  <input id="msg" placeholder="Type message..." />
+  <button onclick="sendMsg()">Send</button>
+
+  <ul id="chatBox"></ul>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:5000");
+
+    const channelId = "692fba05fd8d34327fd5e0b8";  // Your channel ID
+    const userId = "692f3d75bab6eb5136764637";     // Your user ID
+
+    socket.emit("joinChannel", channelId);
+
+    function sendMsg() {
+      const message = document.getElementById("msg").value;
+      socket.emit("sendMessage", {
+        channelId,
+        userId,
+        text: message
+      });
+    }
+
+    socket.on("receiveMessage", (msg) => {
+      const chatBox = document.getElementById("chatBox");
+      const li = document.createElement("li");
+      li.innerText = msg.text + " (User: " + msg.userId + ")";
+      chatBox.appendChild(li);
+    });
+  </script>
+</body>
+</html>
