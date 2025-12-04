@@ -15,7 +15,9 @@ app.use("/api/messages", require("./routes/message"));
 app.use("/api/channels", require("./routes/channels"));
 
 connectDB();
-
+app.get("/",(req, res)=>{
+  return res.json({msg: "API is running"});
+})
 // CREATE SERVER + SOCKET
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
