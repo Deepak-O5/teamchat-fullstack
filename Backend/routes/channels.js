@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Channel = require("../models/Channel");
-const User = require("../models/User");
+const User = require("../models/user");
 
 // CREATE CHANNEL
 router.post("/create", async (req, res) => {
